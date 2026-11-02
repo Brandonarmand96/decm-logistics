@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: decm-nexus-demo
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /api/health
+    autoDeploy: true
+    disk:
+      name: decm-nexus-data
+      mountPath: /opt/render/project/src/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: /opt/render/project/src/data/decm.sqlite
+      - key: SEED_DEMO_DATA
+        value: true
