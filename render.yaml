@@ -2,7 +2,7 @@ services:
   - type: web
     name: decm-nexus-demo
     runtime: node
-    plan: starter
+    plan: free
     buildCommand: npm ci && npm run build
     startCommand: npm run start
     healthCheckPath: /api/health
@@ -17,6 +17,8 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: DB_PATH
-        value: /opt/render/project/src/data/decm.sqlite
+        value: /tmp/decm.sqlite
       - key: SEED_DEMO_DATA
         value: true
+      - key: VITE_SITE_URL
+        value: https://decm-nexus-demo.onrender.com
