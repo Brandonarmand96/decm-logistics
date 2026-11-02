@@ -3,7 +3,7 @@ services:
     name: decm-nexus-demo
     runtime: node
     plan: free
-    buildCommand: npm install --include=dev && npm run build
+    buildCommand: npm ci && npm run build
     startCommand: npm run start
     healthCheckPath: /api/health
     autoDeploy: true
